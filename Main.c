@@ -118,7 +118,7 @@
  * Adding new definitions for initial LED flashing timer values
  * Added by: g0dfather0
  */  
-#define		LED_TOGGLE_INTERVAL1  0x0FFF
+#define		LED_TOGGLE_INTERVAL1  0x00FF
 #define		LED_TOGGLE_INTERVAL2  0x0000
 //Change end
 
