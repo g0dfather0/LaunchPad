@@ -28,7 +28,6 @@ void main(void)
 {
 	WDTCTL = WDTPW + WDTHOLD; // Disable WatchDog Timer
 	__enable_interrupt(); //Enable Interrupts
-	//InitializeClocks();
 	InitializeLEDs();
 	InitializeLEDEffect();
 }
@@ -41,14 +40,10 @@ void InitializeLEDs(void)
 
 void InitializeLEDEffect(void)
 {	
-	LED_OUT &= ~LED_GRN; //Set Green LED on and Red LED off
-	
+	LED_OUT &= ~LED_RED; //Set Green LED on and Red LED off
 	TACCR0 = LED_TOGGLE_RATE; //Set timer value
-	
 	TACTL = TASSEL_1 + MC_1; //Timer A control = Clock Source Select (Timer A) + Timer A mode Control count up to Capture Control 0 (LED_TOGGLE_RATE)
-	
 	TACCTL1 = CCIE + OUTMOD_3; //Timer A Capture Compare Control set to enable interrupt + Pulse Width Modulation Set/Reset 
-	
 	__bis_SR_register(LPM3_bits + GIE); //enable low power with interrupts turned on
 }
 
