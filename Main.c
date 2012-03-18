@@ -51,5 +51,5 @@ void InitializeLEDEffect(void)
 __interrupt void ta1_isr(void)
 {
 	TACCTL1 &= ~CCIFG; //Clear Interrupt Flag for Timer A Capture Compare Control
-    LED_OUT ^= (LED_RED + LED_GRN); //Toggle LEDs
+	LED_OUT ^= (LED_RED + LED_GRN); //Toggle LEDs
 }
