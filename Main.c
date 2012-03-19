@@ -13,8 +13,16 @@
  * ----------------------------------------------------------------------------
  */
  
+#define MSP430g2452 1
+//#define MSP430g2553 1
+
 //Include header file for device
-#include <msp430g2553.h>
+//LaunchPad came with these two devices to sample
+#ifdef MSP430g2452	
+	#include <msp430g2452.h>
+#elif MSP430g2553
+	#include <msp430g2553.h>
+#endif
  
 //Identify IO pins for LEDs specific to LaunchPad configuration
 #define LED_RED BIT0
@@ -25,7 +33,7 @@
 #define LED_OUT P1OUT //Assign variable for controlling LEDs (P1 output register)
  
 //Setting values for timer values for toggling LEDs
-#define LED_TOGGLE_RATE 0x0FFF
+#define LED_TOGGLE_RATE 0x3FFF //TODO: Need to find exact toggle rate frequency
  
 //Declare Functions explicitly
 void InitializeLEDs(void);
